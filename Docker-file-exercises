@@ -1,0 +1,37 @@
+Exercise 1: Building a Python Application Image
+
+Create a Dockerfile to build a Docker image for a Python application:
+
+1. Specify the base image as `python:3.9`.
+2. Set the working directory to `/app`.
+3. Copy the `app.py` file from your local directory to the `/app` directory in the container.
+4. Install the required dependencies using `pip` by running the command `pip install -r requirements.txt`.
+5. Expose port `8080` for the application to listen on.
+6. Set the startup command to run the Python application using `python app.py`.
+=========================================================================================================================================
+
+Exercise 2: Building a Node.js Application Image
+
+Create a Dockerfile to build a Docker image for a Node.js application:
+
+1. Specify the base image as `node:14`.
+2. Set the working directory to `/app`.
+3. Copy the `package.json` and `package-lock.json` files from your local directory to the `/app` directory in the container.
+4. Install the required dependencies using `npm` by running the command `npm install`.
+5. Copy the rest of the application code to the `/app` directory.
+6. Expose port `3000` for the application to listen on.
+7. Set the startup command to run the Node.js application using `npm start`.
+=========================================================================================================================================================
+
+Exercise 3: Building a Multi-Stage Build Image
+
+Create a Dockerfile to build a multi-stage Docker image for a Go application:
+
+1. Use the `golang:1.16` base image for the build stage.
+2. Set the working directory to `/app`.
+3. Copy the `main.go` file from your local directory to the `/app` directory in the container.
+4. Build the Go application using the command `go build -o myapp`.
+5. Use a separate stage for the final image.
+6. Set the base image to `scratch` for the final stage.
+7. Copy the built binary (`myapp`) from the previous stage to the root directory in the final stage.
+8. Set the startup command to run the application using `./myapp`.
