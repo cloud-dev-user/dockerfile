@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  db:
+    image: mysql:5.7
+    container_name: mysql_db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: studentdb
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - app_net
+
+  app:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin_app
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: rootpass
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    networks:
+      - app_net
+
+volumes:
+  db_data:
+
+networks:
+  app_net:
